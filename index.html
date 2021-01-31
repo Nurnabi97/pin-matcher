@@ -40,20 +40,21 @@
                                 <div onclick="inputBtn('3')" class="button"> 3</div>
                             </div>
                             <div class="calc-button-row">
-                                <div onclick="backspace()" class="button"><</div>
+                                <div onclick="backspace()" class="button">
+                                    < </div>
                                         <div onclick="inputBtn('0')" class="button">0</div>
                                         <div onclick="clr()" class="button">C</div>
                                 </div>
                                 <div>
                                     <button onclick="submitBtn()" type="submit" class="submit-btn">Submit</button>
-                                    <p class="action-left"> <span id="counter">3</span>  try left</p>
+                                    <p class="action-left"> <span id="counter">3</span> try left</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="notify-section">
-                    <p id="pin-not-matched" class="notify">❌ Pin Didn't Match, Please try again</p>
+                    <p id="pinNot-matched" class="notify">❌ Pin Didn't Match, Please try again</p>
                     <p id="pin-matched" class="notify">✅ Pin Matched... Secret door is opening for you</p>
                 </div>
             </div>
@@ -71,30 +72,32 @@
                     document.getElementById('input-pin').value = display;
                 }
                 //this section for left side.
-                function numberGenerator(){
-                 document.getElementById('generate-input').value = (Math.random() * 10000 + "").split(".")[0];
+                function numberGenerator() {
+                    document.getElementById('generate-input').value = (Math.random() * 10000 + "").split(".")[0];
 
                 }
-                function submitBtn(){
+                function submitBtn() {
+                    const randomNumber =  document.getElementById('input-pin').value;
+                    const inputNumber =  document.getElementById('generate-input').value;
+                    // if (randomNumber == inputNumber) {
 
-                    if(document.getElementById('generate-input').value === document.getElementById('input-pin').value && "" !=""){
+                    //     document.getElementById('pinNot-matched').style.display = 'block';
+                    // } 
+                    if (randomNumber == inputNumber && "" != "") {
                         document.getElementById('pin-matched').style.display = "block";
-                    }else{
-                        document.getElementById('pin-not-matched').style.display = 'block';
+                        document.getElementById('pinNot-matched').style.display = 'none';
+                    }
+
+                    else {
+
+                        document.getElementById('pinNot-matched').style.display = 'block';
+                        document.getElementById('pin-matched').style.display = "none";
                         document.getElementById('counter').innerText -= 1;
                     }
-                    if(document.getElementById('counter').innerText == -1){
-                       alert("you can't try any more in 20 Minute");
-                   }
                     document.getElementById('input-pin').value = "";
                     document.getElementById('generate-input').value = "";
-                    
                 }
-                function tryCount(){
-                   if(document.getElementById('counter').innerText == 0){
-                       alert("you can't try any more in 20 Minute");
-                   }
-                }
+
             </script>
 </body>
 
