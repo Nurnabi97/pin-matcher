@@ -80,19 +80,19 @@
                     const randomNumber =  document.getElementById('input-pin').value;
                     const inputNumber =  document.getElementById('generate-input').value;
                    
-                    if (randomNumber == inputNumber && "" != "") {
+                    if (randomNumber == inputNumber) {
                         document.getElementById('pin-matched').style.display = "block";
                         document.getElementById('pinNot-matched').style.display = 'none';
                     }
 
-                    else {
+                     else {
 
                         document.getElementById('pinNot-matched').style.display = 'block';
                         document.getElementById('pin-matched').style.display = "none";
                         document.getElementById('counter').innerText -= 1;
                     }
-                    document.getElementById('input-pin').value = "";
-                    document.getElementById('generate-input').value = "";
+                    // document.getElementById('input-pin').value = "";
+                    // document.getElementById('generate-input').value = "";
                 }
 
             </script>
