@@ -23,34 +23,35 @@
                 <div class="input-section half-width">
                     <input id="input-pin" class="form-control" type="text">
                     <div class="numbers">
-                        <div class="calc-body">
+                        <div onclick="parentBtn('event')" id="btnParent" class="calc-body">
                             <div class="calc-button-row">
-                                <div onclick="inputBtn('7')" class="button">7</div>
-                                <div onclick="inputBtn('8')" class="button">8</div>
-                                <div onclick="inputBtn('9')" class="button">9</div>
+                                <div class="button">7</div>
+                                <div class="button">8</div>
+                                <div class="button">9</div>
                             </div>
                             <div class="calc-button-row">
-                                <div onclick="inputBtn('4')" class="button">4</div>
-                                <div onclick="inputBtn('5')" class="button">5</div>
-                                <div onclick="inputBtn('6')" class="button">6</div>
+                                <div class="button">4</div>
+                                <div class="button">5</div>
+                                <div class="button">6</div>
                             </div>
                             <div class="calc-button-row">
-                                <div onclick="inputBtn('1')" class="button">1</div>
-                                <div onclick="inputBtn('2')" class="button">2</div>
-                                <div onclick="inputBtn('3')" class="button"> 3</div>
-                            </div>
-                            <div class="calc-button-row">
-                                <div onclick="backspace()" class="button">
-                                    < </div>
-                                        <div onclick="inputBtn('0')" class="button">0</div>
-                                        <div onclick="clr()" class="button">C</div>
-                                </div>
-                                <div>
-                                    <button onclick="submitBtn()" type="submit" class="submit-btn">Submit</button>
-                                    <p class="action-left"> <span id="counter">3</span> try left</p>
-                                </div>
+                                <div class="button">1</div>
+                                <div class="button">2</div>
+                                <div class="button"> 3</div>
                             </div>
                         </div>
+                        <div class="calc-button-row">
+                            <div onclick="backspace()" class="button">
+                                < </div>
+                                    <div onclick="inputBtn('0')" class="button">0</div>
+                                    <div onclick="clr()" class="button">C</div>
+                            </div>
+                            <div>
+                                <button onclick="submitBtn()" type="submit" class="submit-btn">Submit</button>
+                                <p class="action-left"> <span id="counter">3</span> try left</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="notify-section">
@@ -59,10 +60,12 @@
                 </div>
             </div>
             <script>
-                //this section for right side
-                function inputBtn(inputValue) {
-                    document.getElementById('input-pin').value += inputValue;
+                //add event listener in parent div for all button. it's call babble magic.
+                function parentBtn() {
+                    let clickBtn = event.target.innerText;
+                    document.getElementById('input-pin').value += clickBtn;
                 }
+
                 function clr() {
                     document.getElementById('input-pin').value = "";
                 }
@@ -77,15 +80,15 @@
 
                 }
                 function submitBtn() {
-                    const randomNumber =  document.getElementById('input-pin').value;
-                    const inputNumber =  document.getElementById('generate-input').value;
-                   
+                    const randomNumber = document.getElementById('input-pin').value;
+                    const inputNumber = document.getElementById('generate-input').value;
+
                     if (randomNumber == inputNumber) {
                         document.getElementById('pin-matched').style.display = "block";
                         document.getElementById('pinNot-matched').style.display = 'none';
                     }
 
-                     else {
+                    else {
 
                         document.getElementById('pinNot-matched').style.display = 'block';
                         document.getElementById('pin-matched').style.display = "none";
